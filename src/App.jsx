@@ -577,23 +577,22 @@ function App() {
 						<span>Phone Number:</span> +234 815 984 8374
 					</p>
 				</div>
+				<div className="cta-image-container">
+					<img src="/images/sparks.png" className="cta-image" alt="CTA Image" />
+				</div>
 			</section>
 
 			<footer className="footer">
-				<div className="brand">
-					<div className="brand-mark" aria-hidden="true">
-						CE
-					</div>
-					<div className="brand-copy">
-						<strong>Chika Energy</strong>
-						<span>Powered by renewables</span>
-					</div>
+				<div className="footer-inner">
+					<img src="/CE_logo.svg" className="footer-logo" alt="Chika Energy" />
+					<nav className="footer-nav" aria-label="Footer">
+						<a href="#home">Home</a>
+						<a href="#about">About Us</a>
+						<a href="#core-values">Core Values</a>
+						<a href="#products">Products</a>
+					</nav>
+					<p className="footer-copy">© Chika Energy 2026</p>
 				</div>
-				<nav>
-					<a href="#about">About</a>
-					<a href="#products">Catalog</a>
-					<a href="#contact">Talk to us</a>
-				</nav>
 			</footer>
 		</div>
 	);
