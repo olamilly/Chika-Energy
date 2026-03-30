@@ -12,7 +12,7 @@ const featureCards = [
 	{
 		title: "Reliability",
 		description:
-			"We deliver consistent, high-quality energy solutions that meet your needs.",
+			"We deliver dependable energy solutions that customers and partners can rely on.",
 		image: "/images/reliability.jpg",
 	},
 	{
@@ -31,7 +31,7 @@ const featureCards = [
 	{
 		title: "Sustainability",
 		description:
-			"We prioritize clean, renewable energy solutions that are environmentally responsible.",
+			"We build solutions that support long-term environmental and economic progress.",
 		image: "/images/sustainability.jpg",
 	},
 ];
@@ -60,6 +60,45 @@ const products = [
 	{
 		name: "Chika Energy Nova Drive 2.50kVA",
 		image: "/images/nuru2.png",
+	},
+];
+
+const services = [
+	{
+		name: "PAYG Systems",
+		description:
+			"Pay-As-You-Go plans that allow customers to pay for energy solutions in affordable installments.",
+		image: "/images/innovation.jpg",
+	},
+	{
+		name: "Consultancy",
+		description:
+			"Professional energy advisory services to help you choose the right system for your needs.",
+		image: "/images/about-image.jpg",
+	},
+	{
+		name: "Installation",
+		description:
+			"Expert end-to-end system installation for residential, commercial, and institutional projects.",
+		image: "/images/reliability.jpg",
+	},
+	{
+		name: "Concierge Services",
+		description:
+			"Dedicated support to manage your energy journey from product selection to deployment.",
+		image: "/images/excellence.jpg",
+	},
+	{
+		name: "24/7 Customer Support",
+		description:
+			"Round-the-clock assistance to keep your systems running reliably at all times.",
+		image: "/images/vision-image.jpg",
+	},
+	{
+		name: "After Sales Support",
+		description:
+			"Ongoing maintenance, troubleshooting, and optimization to protect your long-term investment.",
+		image: "/images/sustainability.jpg",
 	},
 ];
 
@@ -303,17 +342,17 @@ function App() {
 				</header>
 
 				<div className="hero-content">
-					<h1>Lorem ipsum pulvinar scelerisque</h1>
+					<h1>Powering the Future of Energy in Africa</h1>
 					<p>
-						Reliable clean energy systems tailored for homes, enterprises, and
-						communities.
+						We deliver reliable, innovative, and sustainable renewable energy
+						solutions for homes, businesses, institutions, and communities.
 					</p>
 					<a
 						href="#about"
 						onClick={() => setActiveSection("about")}
 						className="primary-btn"
 					>
-						Get Started
+						Explore Solutions
 					</a>
 				</div>
 			</section>
@@ -359,17 +398,17 @@ function App() {
 				<div className="content-shell">
 					<section className="section-intro" id="about">
 						<span className="section-badge">About us</span>
-						<h2>Lorem ipsum et aliquam</h2>
+						<h2>Innovative Energy Solutions with Long-Term Impact</h2>
 						<p>
 							Chika Energy Solutions Limited is an innovative energy and
 							infrastructure company committed to delivering reliable,
 							efficient, and sustainable power solutions. Through advanced
 							technology, strategic partnerships, and industry expertise, we
-							have developed and managed energy systems that support economic
-							growth and strengthen communities. With a commitment to excellence
-							and long-term impact, Chika Energy Solutions provides
-							forward-thinking solutions that power industries, enable
-							development, and help shape the future.
+							develop and manage energy systems that support economic growth and
+							strengthen communities. With a commitment to excellence and
+							long-term impact, Chika Energy Solutions provides forward-thinking
+							solutions that power industries, enable development, and help
+							shape the future of energy.
 						</p>
 					</section>
 
@@ -378,10 +417,10 @@ function App() {
 							<article className="roadmap-copy">
 								<h3>Future roadmap</h3>
 								<p>
-									Chika Energy Solutions Limited aims to become a leading
-									diversified energy company in Africa within the next decade,
-									delivering reliable energy solutions that support homes,
-									businesses, and communities.
+									Chika Energy Solutions Limited is committed to becoming the
+									leading diversified energy company in Africa by delivering
+									reliable, affordable, and clean energy that closes the energy
+									gap and drives sustainable growth.
 								</p>
 								<div className="roadmap-tabs">
 									{roadmapItems.map((item) => (
@@ -432,10 +471,11 @@ function App() {
 				<div className="content-shell core-values">
 					<section className="section-intro" id="core-values">
 						<span className="section-badge">Core values</span>
-						<h2>Lorem ipsum et aliquam</h2>
+						<h2>Quality, Trust, and Measurable Impact</h2>
 						<p>
-							Our operations are anchored on quality, trust, and sustainable
-							impact across every project.
+							Chika Energy delivers reliable, sustainable, and innovative energy
+							with integrity, reliability, sustainability, innovation, and
+							excellence at the center of every project.
 						</p>
 					</section>
 
@@ -458,10 +498,10 @@ function App() {
 				<div className="content-shell">
 					<section className="section-intro" id="products">
 						<span className="section-badge">Our products</span>
-						<h2>Lorem ipsum et aliquam</h2>
+						<h2>Reliable Renewable Energy Products</h2>
 						<p>
-							Our operations are anchored on quality, trust, and sustainable
-							impact across every project.
+							Explore our curated range of dependable solar and backup power
+							equipment built for homes, businesses, and institutions.
 						</p>
 					</section>
 
@@ -478,8 +518,45 @@ function App() {
 										className="product-quote-btn"
 										onClick={openContactModal}
 									>
-										Get quote
+										Get Quote
 									</button>
+								</div>
+							</article>
+						))}
+					</section>
+					<div className="catalog-cta">
+						<button
+							type="button"
+							className="primary-btn catalog-btn"
+							onClick={openContactModal}
+						>
+							View Full Catalog
+						</button>
+					</div>
+				</div>
+
+				<div className="content-shell services">
+					<section className="section-intro" id="services">
+						<span className="section-badge">Our services</span>
+						<h2>Full-Service Energy Support</h2>
+						<p>
+							Beyond equipment supply, we provide implementation and support
+							services that help customers deploy, manage, and scale reliable
+							energy systems.
+						</p>
+					</section>
+
+					<section className="services-grid">
+						{services.map((service) => (
+							<article key={service.name} className="product-card service-card">
+								<div className="product-card-media">
+									<img src={service.image} alt={service.name} />
+								</div>
+								<div className="product-card-body">
+									<h5>{service.name}</h5>
+									<p className="service-card-description">
+										{service.description}
+									</p>
 								</div>
 							</article>
 						))}
@@ -510,7 +587,7 @@ function App() {
 						</button>
 						<h3 id="contact-modal-title">Get in touch with us</h3>
 						<p className="contact-modal-subheading">
-							Let&apos;s help you get started
+							Let&apos;s design the right energy solution for you
 						</p>
 						<div className="contact-modal-lottie">
 							{/* <DotLottieReact
@@ -553,7 +630,7 @@ function App() {
 
 			<section className="cta-panel" id="contact">
 				<span className="section-badge light">Reach us</span>
-				<h2>Lorem ipsum et aliquam</h2>
+				<h2>Let&apos;s Power Your Home, Business, or Community</h2>
 				<button
 					className="primary-btn mb-2"
 					onClick={openContactModal}
@@ -568,7 +645,7 @@ function App() {
 						<span className="cta-contact-icon" aria-hidden="true">
 							<img src="/location.svg" alt="Location" />
 						</span>
-						<span>Address:</span> 3, Lorem ipsum semper ipsum semper.
+						<span>Address:</span> Lagos, Nigeria (serving clients nationwide).
 					</p>
 					<p>
 						<span className="cta-contact-icon" aria-hidden="true">

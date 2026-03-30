@@ -464,7 +464,8 @@ button {
 }
 
 .features-grid,
-.products-grid {
+.products-grid,
+.services-grid {
 	display: grid;
 	gap: 14px;
 }
@@ -535,6 +536,11 @@ button {
 	gap: 18px;
 }
 
+.services-grid {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 18px;
+}
+
 .product-card {
 	border-radius: 20px;
 	padding: 8px;
@@ -589,6 +595,23 @@ button {
 .product-quote-btn:focus-visible {
 	outline: 2px solid #133536;
 	outline-offset: 2px;
+}
+
+.catalog-cta {
+	margin: 24px 0 10px;
+	display: flex;
+	justify-content: center;
+}
+
+.catalog-btn {
+	font-size: 15px;
+}
+
+.service-card-description {
+	margin: 0 0 12px;
+	font-size: 13px;
+	line-height: 1.45;
+	color: #536869;
 }
 
 .contact-modal-overlay {
@@ -779,7 +802,8 @@ button {
 	background: #f6f7f7;
 }
 
-.core-values {
+.core-values,
+.services {
 	background: #f4f5f6;
 }
 .cta-panel h2 {
@@ -1041,6 +1065,10 @@ button {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 
+	.services-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
 	.product-card-media img {
 		height: 216px;
 	}
@@ -1136,7 +1164,8 @@ button {
 	}
 
 	.features-grid,
-	.products-grid {
+	.products-grid,
+	.services-grid {
 		grid-template-columns: 1fr;
 	}
 
