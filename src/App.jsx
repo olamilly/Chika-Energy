@@ -68,37 +68,37 @@ const services = [
 		name: "PAYG Systems",
 		description:
 			"Pay-As-You-Go plans that allow customers to pay for energy solutions in affordable installments.",
-		image: "/images/innovation.jpg",
+		image: "/images/payg.jpeg",
 	},
 	{
 		name: "Consultancy",
 		description:
 			"Professional energy advisory services to help you choose the right system for your needs.",
-		image: "/images/about-image.jpg",
+		image: "/images/consultation.jpeg",
 	},
 	{
 		name: "Installation",
 		description:
 			"Expert end-to-end system installation for residential, commercial, and institutional projects.",
-		image: "/images/reliability.jpg",
+		image: "/images/installation.jpeg",
 	},
 	{
 		name: "Concierge Services",
 		description:
 			"Dedicated support to manage your energy journey from product selection to deployment.",
-		image: "/images/excellence.jpg",
+		image: "/images/concierge.jpeg",
 	},
 	{
 		name: "24/7 Customer Support",
 		description:
 			"Round-the-clock assistance to keep your systems running reliably at all times.",
-		image: "/images/vision-image.jpg",
+		image: "/images/support.jpeg",
 	},
 	{
 		name: "After Sales Support",
 		description:
 			"Ongoing maintenance, troubleshooting, and optimization to protect your long-term investment.",
-		image: "/images/sustainability.jpg",
+		image: "/images/support2.jpeg",
 	},
 ];
 
@@ -285,8 +285,7 @@ function App() {
             </div> */}
 						<img
 							src="CE_logo.svg"
-							height={52}
-							width={120}
+							className="brand-logo"
 							alt="Chika Energy Logo"
 						/>
 					</div>
