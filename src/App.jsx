@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 // import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import "./App.css";
 
@@ -16,10 +16,10 @@ const featureCards = [
 		image: "/images/reliability.jpg",
 	},
 	{
-		title: "Excellence",
+		title: "Sustainability",
 		description:
-			"We pursue the highest standards in quality, service, and performance.",
-		image: "/images/excellence.jpg",
+			"We build solutions that support long-term environmental and economic progress.",
+		image: "/images/sustainability.jpg",
 	},
 	{
 		title: "Innovation",
@@ -29,10 +29,10 @@ const featureCards = [
 		wide: true,
 	},
 	{
-		title: "Sustainability",
+		title: "Excellence",
 		description:
-			"We build solutions that support long-term environmental and economic progress.",
-		image: "/images/sustainability.jpg",
+			"We pursue the highest standards in quality, service, and performance.",
+		image: "/images/excellence.jpg",
 	},
 ];
 
@@ -101,6 +101,168 @@ const services = [
 		image: "/images/support2.jpeg",
 	},
 ];
+
+const whoWeServe = [
+	{
+		title: "Homes (Residential Customers)",
+		description: "Reliable solutions for households, apartments, and estates.",
+		icon: "/images/homes.webp",
+	},
+	{
+		title: "Businesses (Large & Small)",
+		description:
+			"SMEs, corporate offices, commercial facilities, factories, and real estate developers.",
+		icon: "/images/businesses.avif",
+	},
+	{
+		title: "Institutions",
+		description:
+			"Churches, mosques, schools, NGOs, and community organizations.",
+		icon: "/images/institutions.jpg",
+	},
+	{
+		title: "Government (MDAs)",
+		description:
+			"Ministries, departments, and agencies requiring scalable energy solutions.",
+		icon: "/images/governments.jpg",
+	},
+];
+
+const serviceMenuItems = [
+	{
+		title: "Consultancy",
+		description:
+			"Expert guidance to design the right energy solution for your goals.",
+		icon: "/images/consultation.jpeg",
+	},
+	{
+		title: "Installation",
+		description:
+			"Professional setup for safe, efficient, and reliable system performance.",
+		icon: "/images/installation.jpeg",
+	},
+	{
+		title: "Concierge Services",
+		description:
+			"Dedicated support from planning and procurement to project delivery.",
+		icon: "/images/concierge.jpeg",
+	},
+	{
+		title: "24/7 Customer Support",
+		description:
+			"Always-on assistance to resolve issues quickly and minimize downtime.",
+		icon: "/images/support.jpeg",
+	},
+	{
+		title: "After Sales Support",
+		description:
+			"Post-installation care, maintenance, and optimization for long-term value.",
+		icon: "/images/support2.jpeg",
+	},
+];
+
+function NavDropdown({ label, items, variant }) {
+	const dropdownKey = label
+		.toLowerCase()
+		.replace(/[^a-z0-9]+/g, "-")
+		.replace(/^-|-$/g, "");
+	const dropdownRef = useRef(null);
+	const isDesktopHeaderDropdown = variant === "desktop";
+
+	useEffect(() => {
+		if (!isDesktopHeaderDropdown) {
+			return undefined;
+		}
+
+		const onDocumentClick = (event) => {
+			const dropdownElement = dropdownRef.current;
+			if (!dropdownElement || dropdownElement.contains(event.target)) {
+				return;
+			}
+
+			dropdownElement.dataset.pinned = "false";
+			dropdownElement.removeAttribute("open");
+		};
+
+		document.addEventListener("click", onDocumentClick);
+		return () => {
+			document.removeEventListener("click", onDocumentClick);
+		};
+	}, [isDesktopHeaderDropdown]);
+
+	return (
+		<details
+			ref={dropdownRef}
+			className={`nav-dropdown nav-dropdown-${variant} nav-dropdown-${dropdownKey}`}
+			onMouseEnter={(event) => {
+				if (
+					isDesktopHeaderDropdown &&
+					event.currentTarget.dataset.pinned !== "true"
+				) {
+					event.currentTarget.setAttribute("open", "");
+				}
+			}}
+			onMouseLeave={(event) => {
+				if (
+					isDesktopHeaderDropdown &&
+					event.currentTarget.dataset.pinned !== "true"
+				) {
+					event.currentTarget.removeAttribute("open");
+				}
+			}}
+		>
+			<summary
+				className="nav-dropdown-summary"
+				onClick={(event) => {
+					if (!isDesktopHeaderDropdown) {
+						return;
+					}
+
+					event.preventDefault();
+					const dropdownElement = event.currentTarget.parentElement;
+					if (!dropdownElement) {
+						return;
+					}
+
+					const isPinnedOpen = dropdownElement.dataset.pinned === "true";
+					if (isPinnedOpen) {
+						dropdownElement.dataset.pinned = "false";
+						dropdownElement.removeAttribute("open");
+						return;
+					}
+
+					dropdownElement.dataset.pinned = "true";
+					dropdownElement.setAttribute("open", "");
+				}}
+			>
+				<span className="nav-dropdown-summary-text-header">{label}</span>
+				<span className="nav-dropdown-caret" aria-hidden="true">
+					▾
+				</span>
+			</summary>
+			<div className="nav-dropdown-menu" role="menu" aria-label={label}>
+				<ul className="nav-dropdown-list">
+					{items.map((item) => (
+						<li key={item.title} className="nav-dropdown-item">
+							{item.icon ? (
+								<img
+									src={item.icon}
+									alt=""
+									aria-hidden="true"
+									className="nav-dropdown-item-icon"
+								/>
+							) : null}
+							<div className="nav-dropdown-item-copy">
+								<strong>{item.title}</strong>
+								{item.description ? <span>{item.description}</span> : null}
+							</div>
+						</li>
+					))}
+				</ul>
+			</div>
+		</details>
+	);
+}
 
 const roadmapItems = [
 	{
@@ -320,6 +482,16 @@ function App() {
 						>
 							Products
 						</a>
+						<NavDropdown
+							label="Who We Serve"
+							items={whoWeServe}
+							variant="desktop"
+						/>
+						<NavDropdown
+							label="Services"
+							items={serviceMenuItems}
+							variant="desktop"
+						/>
 					</nav>
 					<a
 						href="#contact"
@@ -383,6 +555,16 @@ function App() {
 					<a href="#products" onClick={closeMobileNav}>
 						Products
 					</a>
+					<NavDropdown
+						label="Who We Serve"
+						items={whoWeServe}
+						variant="mobile"
+					/>
+					<NavDropdown
+						label="Services"
+						items={serviceMenuItems}
+						variant="mobile"
+					/>
 					<a
 						href="#contact"
 						className="mobile-contact-btn"
@@ -534,7 +716,7 @@ function App() {
 					</div>
 				</div>
 
-				<div className="content-shell services">
+				{/* <div className="content-shell services">
 					<section className="section-intro" id="services">
 						<span className="section-badge">Our services</span>
 						<h2>Full-Service Energy Support</h2>
@@ -560,7 +742,7 @@ function App() {
 							</article>
 						))}
 					</section>
-				</div>
+				</div> */}
 			</main>
 
 			{isContactModalOpen && (
@@ -666,6 +848,16 @@ function App() {
 						<a href="#about">About Us</a>
 						<a href="#core-values">Core Values</a>
 						<a href="#products">Products</a>
+						<NavDropdown
+							label="Who We Serve"
+							items={whoWeServe}
+							variant="footer"
+						/>
+						<NavDropdown
+							label="Services"
+							items={serviceMenuItems}
+							variant="footer"
+						/>
 					</nav>
 					<p className="footer-copy">© Chika Energy 2026</p>
 				</div>
